@@ -1,0 +1,16 @@
+body {
+    background: red;
+}
+
+.product-image {
+    height: 100px;
+}
+
+.product-card {
+    width: 150px;
+    padding: 20px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
