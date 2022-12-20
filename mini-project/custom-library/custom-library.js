@@ -5,15 +5,27 @@ const createElement = (tagName, fatherNode) => {
 }
 
 const showObject = (object) => {
-    const wrap = createElement('div', document.body)
+    const wrap = createElement('div', document.body);
+    wrap.classList.add('wrap');
+    const ul = createElement('ul', wrap);
     for (const objectKey in object) {
-        const p = createElement('p', wrap)
+        const li = createElement('li', ul);
         if (typeof (object[objectKey]) !== "object") {
-            p.innerHTML = objectKey + " : " + object[objectKey];
+            li.innerHTML = objectKey + " : " + object[objectKey];
         } else {
-            p.innerHTML = objectKey + ' :'
+            li.innerHTML = `<b>${objectKey}  :</b>`;
             showObject(object[objectKey]);
         }
     }
 }
-export {createElement, showObject}
+const showSelectedkeysInObjet = (object, saveTo, ...keys) => {
+    const ul = createElement('ul', saveTo)
+    for (const key of keys) {
+        const li = createElement('li', ul)
+        for (const objectKey in object) {
+            if (objectKey === key)
+                li.innerHTML = `${objectKey} : ${object[objectKey]}`
+        }
+    }
+}
+export {createElement, showObject, showSelectedkeysInObjet}
