@@ -9,12 +9,14 @@ import {getUsers} from "./services";
 import {createElement, showSelectedkeysInObjet} from "./custom-library";
 
 getUsers().then((users) => {
+    let usersDiv = createElement('div',document.body)
+    usersDiv.classList.add('users')
     for (const user of users) {
-      let userDiv = createElement('div',document.body)
-      userDiv.classList.add('user')
+        let userDiv = createElement('div',usersDiv)
+        userDiv.classList.add('user')
         showSelectedkeysInObjet(user,userDiv,'id', 'name')
-        const link = createElement('a',userDiv)
-        link.innerText ='See more'
-        link.setAttribute("href",`./components/user-details.component/user-details.html?user=${user.id}`)
+        const linkToUserDetails = createElement('a',userDiv)
+        linkToUserDetails.innerText ='See more'
+        linkToUserDetails.setAttribute("href",`./components/user-details.component/user-details.html?user=${user.id}`)
     }
 });

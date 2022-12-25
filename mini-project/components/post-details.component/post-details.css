@@ -1,0 +1,33 @@
+/*post-details.html - блок з інфою про пост зверху. Коментарі - по 4 в ряд.*/
+/*Всі елементи котрі характеризують users, posts, comments візуалізувати, так, щоб було видно що це блоки (дати фон. марджини і тд)*/
+button {
+    width: 90%;
+    margin: 5%;
+}
+
+.post {
+    background: lightblue;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 5%;
+}
+
+ul {
+    background: cornflowerblue;
+}
+
+.comments > ul {
+    width: 24%;
+    box-sizing: border-box;
+}
+
+.comments {
+    column-gap: 1%;
+    display: flex;
+    flex-wrap: wrap;
+    background: lightskyblue;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 1%;
+}

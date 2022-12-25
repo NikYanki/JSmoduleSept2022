@@ -6,19 +6,28 @@
 6 Каждому посту додати кнопку/посилання, при кліку на яку відбувається перехід на сторінку post-details.html, котра має детальну інфу про поточний пост.
 */
 import {getSingleUser, getUserPosts} from "../../services";
-import {showObject, createElement,showSelectedkeysInObjet} from "../../custom-library";
+import {showObject, createElement, showSelectedkeysInObjet} from "../../custom-library";
 
 
-const userId = new URL(location.href).searchParams.get('user');
+const userId = new URL(location.href).searchParams.get("user");
 getSingleUser(userId).then(user => {
-    showObject(user)
-    const btnPostOfCurrentUser = createElement("button", document.body);
+    const userDetails = createElement('div', document.body);
+    userDetails.classList.add('user');
+    showObject(user, userDetails)
+    const btnPostOfCurrentUser = createElement("button", userDetails);
     btnPostOfCurrentUser.innerText = "post of current user";
     btnPostOfCurrentUser.addEventListener("click", (e) => {
         getUserPosts(userId).then(posts => {
-
+            const postsDiv =createElement("div",document.body)
+            postsDiv.classList.add("posts")
             for (const post of posts) {
-                showSelectedkeysInObjet(post,document.body, "title")
+                const postDiv =createElement("div",postsDiv)
+                postDiv.classList.add("post")
+                showSelectedkeysInObjet(post, postDiv, "title")
+                const linkToPostDetails = createElement("a", postDiv)
+                linkToPostDetails.innerText = "see more"
+                linkToPostDetails.setAttribute("href", `../../components/post-details.component/post-details.html?post=${post.id}\ `)
+
             }
 
         })

@@ -4,17 +4,15 @@ const createElement = (tagName, fatherNode) => {
     return tag;
 }
 
-const showObject = (object) => {
-    const wrap = createElement('div', document.body);
-    wrap.classList.add('wrap');
-    const ul = createElement('ul', wrap);
+const showObject = (object, saveTo) => {
+    const ul = createElement('ul', saveTo);
     for (const objectKey in object) {
         const li = createElement('li', ul);
         if (typeof (object[objectKey]) !== "object") {
             li.innerHTML = objectKey + " : " + object[objectKey];
         } else {
             li.innerHTML = `<b>${objectKey}  :</b>`;
-            showObject(object[objectKey]);
+            showObject(object[objectKey],saveTo);
         }
     }
 }
