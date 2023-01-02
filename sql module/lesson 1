@@ -1,0 +1,33 @@
+use niki1111;
+
+create table animals
+(
+    id int primary key auto_increment,
+    name varchar(20) not null
+);
+insert into animals value (null,'panda');
+select * from cars;
+select * from cars where year<2000;
+select * from cars where year >2015;
+select * from cars where year>2008 and year<2010;
+select * from cars where year between 2008 and 2010;
+select * from cars where year not in(2008, 2009, 2010);
+select * from cars where year like cars.price;
+
+select * from cars where model = 'bmw' and year<2014;
+select * from cars where model like 'audi' and not year<2014;
+select * from cars limit 5;
+select * from cars limit 5 offset 5;
+select * from cars order by id desc limit 5;
+
+select avg(price) as avgPrice from cars where model like 'kia';
+select avg(price) as avgPrice from cars;
+select * from cars;
+select count(model) as model,  model from cars group by model;
+select count(*) as modelCount, model from cars group by model order by modelCount desc limit 1;
+select count(*) as modelCount, model from cars group by model having modelCount >5;
+select * from cars where model like '_a%a_';
+select * from cars where length(model)>8;
+
+
+
